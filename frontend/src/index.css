@@ -1,0 +1,263 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* ============================================================================
+   CSS Variables - Elegant Luxury Theme
+   Based on tweakcn.com elegant-luxury theme with light/dark mode support
+   ============================================================================ */
+
+:root {
+  /* Light Mode - Elegant Luxury */
+  --background: 0.9779 0.0042 56.3756;
+  --foreground: 0.2178 0 0;
+  --card: 0.9779 0.0042 56.3756;
+  --card-foreground: 0.2178 0 0;
+  --popover: 0.9779 0.0042 56.3756;
+  --popover-foreground: 0.2178 0 0;
+  --primary: 0.4650 0.1470 24.9381;
+  --primary-foreground: 1.0000 0 0;
+  --secondary: 0.9625 0.0385 89.0943;
+  --secondary-foreground: 0.4847 0.1022 75.1153;
+  --muted: 0.9431 0.0068 53.4442;
+  --muted-foreground: 0.4444 0.0096 73.6390;
+  --accent: 0.9619 0.0580 95.6174;
+  --accent-foreground: 0.3958 0.1331 25.7230;
+  --destructive: 0.4437 0.1613 26.8994;
+  --destructive-foreground: 1.0000 0 0;
+  --border: 0.9355 0.0324 80.9937;
+  --input: 0.9355 0.0324 80.9937;
+  --ring: 0.4650 0.1470 24.9381;
+  --chart-1: 0.5054 0.1905 27.5181;
+  --chart-2: 0.4650 0.1470 24.9381;
+  --chart-3: 0.3958 0.1331 25.7230;
+  --chart-4: 0.5553 0.1455 48.9975;
+  --chart-5: 0.4732 0.1247 46.2007;
+  --sidebar: 0.9431 0.0068 53.4442;
+  --sidebar-foreground: 0.2178 0 0;
+  --sidebar-primary: 0.4650 0.1470 24.9381;
+  --sidebar-primary-foreground: 1.0000 0 0;
+  --sidebar-accent: 0.9619 0.0580 95.6174;
+  --sidebar-accent-foreground: 0.3958 0.1331 25.7230;
+  --sidebar-border: 0.9355 0.0324 80.9937;
+  --sidebar-ring: 0.4650 0.1470 24.9381;
+
+  /* Typography - Inter supports Vietnamese perfectly */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Libre Baskerville', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Border Radius */
+  --radius: 0.375rem;
+
+  /* Shadows */
+  --shadow-2xs: 1px 1px 16px -2px hsl(0 63% 18% / 0.06);
+  --shadow-xs: 1px 1px 16px -2px hsl(0 63% 18% / 0.06);
+  --shadow-sm: 1px 1px 16px -2px hsl(0 63% 18% / 0.12), 1px 1px 2px -3px hsl(0 63% 18% / 0.12);
+  --shadow: 1px 1px 16px -2px hsl(0 63% 18% / 0.12), 1px 1px 2px -3px hsl(0 63% 18% / 0.12);
+  --shadow-md: 1px 1px 16px -2px hsl(0 63% 18% / 0.12), 1px 2px 4px -3px hsl(0 63% 18% / 0.12);
+  --shadow-lg: 1px 1px 16px -2px hsl(0 63% 18% / 0.12), 1px 4px 6px -3px hsl(0 63% 18% / 0.12);
+  --shadow-xl: 1px 1px 16px -2px hsl(0 63% 18% / 0.12), 1px 8px 10px -3px hsl(0 63% 18% / 0.12);
+  --shadow-2xl: 1px 1px 16px -2px hsl(0 63% 18% / 0.30);
+}
+
+.dark {
+  /* Dark Mode - Elegant Luxury */
+  --background: 0.2161 0.0061 56.0434;
+  --foreground: 0.9699 0.0013 106.4238;
+  --card: 0.2685 0.0063 34.2976;
+  --card-foreground: 0.9699 0.0013 106.4238;
+  --popover: 0.2685 0.0063 34.2976;
+  --popover-foreground: 0.9699 0.0013 106.4238;
+  --primary: 0.5054 0.1905 27.5181;
+  --primary-foreground: 0.9779 0.0042 56.3756;
+  --secondary: 0.4732 0.1247 46.2007;
+  --secondary-foreground: 0.9619 0.0580 95.6174;
+  --muted: 0.2291 0.0060 56.0708;
+  --muted-foreground: 0.8687 0.0043 56.3660;
+  --accent: 0.5553 0.1455 48.9975;
+  --accent-foreground: 0.9619 0.0580 95.6174;
+  --destructive: 0.6368 0.2078 25.3313;
+  --destructive-foreground: 1.0000 0 0;
+  --border: 0.3741 0.0087 67.5582;
+  --input: 0.3741 0.0087 67.5582;
+  --ring: 0.5054 0.1905 27.5181;
+  --chart-1: 0.7106 0.1661 22.2162;
+  --chart-2: 0.6368 0.2078 25.3313;
+  --chart-3: 0.5771 0.2152 27.3250;
+  --chart-4: 0.8369 0.1644 84.4286;
+  --chart-5: 0.7686 0.1647 70.0804;
+  --sidebar: 0.2161 0.0061 56.0434;
+  --sidebar-foreground: 0.9699 0.0013 106.4238;
+  --sidebar-primary: 0.5054 0.1905 27.5181;
+  --sidebar-primary-foreground: 0.9779 0.0042 56.3756;
+  --sidebar-accent: 0.5553 0.1455 48.9975;
+  --sidebar-accent-foreground: 0.9619 0.0580 95.6174;
+  --sidebar-border: 0.3741 0.0087 67.5582;
+  --sidebar-ring: 0.5054 0.1905 27.5181;
+}
+
+/* ============================================================================
+   Base Styles
+   ============================================================================ */
+
+* {
+  @apply border-border;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-family: var(--font-sans);
+}
+
+/* ============================================================================
+   Custom Scrollbar
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: oklch(var(--muted) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground) / 0.5);
+}
+
+/* ============================================================================
+   Three.js Canvas
+   ============================================================================ */
+
+.three-canvas {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   Glass Morphism Effects
+   ============================================================================ */
+
+.glass {
+  background: oklch(var(--card) / 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-strong {
+  background: oklch(var(--card) / 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ============================================================================
+   Animations
+   ============================================================================ */
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* ============================================================================
+   File Drop Zone
+   ============================================================================ */
+
+.drop-zone {
+  @apply border-2 border-dashed rounded-lg p-8 transition-all duration-300;
+  border-color: oklch(var(--border));
+}
+
+.drop-zone:hover,
+.drop-zone.active {
+  border-color: oklch(var(--primary));
+  background: oklch(var(--primary) / 0.05);
+}
+
+.drop-zone.dragging {
+  border-color: oklch(var(--primary));
+  background: oklch(var(--primary) / 0.1);
+  transform: scale(1.01);
+}
+
+/* ============================================================================
+   Progress Bar
+   ============================================================================ */
+
+.progress-bar {
+  @apply h-2 rounded-full overflow-hidden;
+  background: oklch(var(--muted));
+}
+
+.progress-bar-fill {
+  @apply h-full rounded-full transition-all duration-300;
+  background: linear-gradient(
+    90deg,
+    oklch(var(--primary)),
+    oklch(var(--accent))
+  );
+}
+
+/* ============================================================================
+   Card Hover Effects
+   ============================================================================ */
+
+.card-hover {
+  @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================================================
+   Typography Utilities
+   ============================================================================ */
+
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(var(--primary)),
+    oklch(var(--accent))
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================================
+   Focus Styles
+   ============================================================================ */
+
+.focus-ring {
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  --tw-ring-color: oklch(var(--ring));
+  --tw-ring-offset-color: oklch(var(--background));
+}

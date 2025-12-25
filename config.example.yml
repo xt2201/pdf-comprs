@@ -1,0 +1,194 @@
+# =============================================================================
+# PDF Compression Tool - Configuration
+# =============================================================================
+# All application settings are centralized here. No hardcoding in code.
+# =============================================================================
+
+app:
+  name: "PDF Compression Tool"
+  version: "1.0.0"
+  description: "PDF compression with image to PDF conversion"
+
+# =============================================================================
+# Server Configuration
+# =============================================================================
+server:
+  backend:
+    host: "0.0.0.0"
+    port: 8007
+    reload: true  # Hot reload for development
+    workers: 1    # Number of workers (increase for production)
+  
+  frontend:
+    host: "localhost"
+    port: 3000
+    
+  cors:
+    allow_origins:
+      - "http://localhost:3007"
+      - "http://127.0.0.1:3007"
+    allow_methods:
+      - "GET"
+      - "POST"
+      - "DELETE"
+    allow_headers:
+      - "*"
+
+# =============================================================================
+# Ngrok Configuration (Public Deployment)
+# =============================================================================
+ngrok:
+  enabled: false           # Set to true to enable ngrok tunnel
+  auth_token: ""           # Your ngrok auth token (optional for basic usage)
+  region: "us"             # Region: us, eu, ap, au, sa, jp, in
+  domain: ""               # Custom domain (requires paid plan)
+
+# =============================================================================
+# File Upload Configuration
+# =============================================================================
+upload:
+  max_file_size_mb: 100    # Maximum file size in MB
+  allowed_image_types:
+    - ".png"
+    - ".jpg"
+    - ".jpeg"
+    - ".bmp"
+    - ".tiff"
+    - ".webp"
+  allowed_pdf_types:
+    - ".pdf"
+  temp_directory: ""       # Leave empty to use system temp directory
+
+# =============================================================================
+# PDF Compression Settings
+# =============================================================================
+compression:
+  default:
+    target_size_mb: 0.5
+    dpi: 72
+    quality: 50
+    auto_compress: true
+  
+  presets:
+    - name: "high_quality"
+      label: "High Quality"
+      dpi: 150
+      quality: 80
+      description: "Best visual quality, larger file size"
+    
+    - name: "good_quality"
+      label: "Good Quality"
+      dpi: 120
+      quality: 70
+      description: "Good balance of quality and size"
+    
+    - name: "medium"
+      label: "Medium"
+      dpi: 96
+      quality: 60
+      description: "Moderate compression"
+    
+    - name: "low_quality"
+      label: "Low Quality"
+      dpi: 72
+      quality: 50
+      description: "Smaller file size"
+    
+    - name: "very_low"
+      label: "Very Low"
+      dpi: 50
+      quality: 40
+      description: "Aggressive compression"
+    
+    - name: "minimal"
+      label: "Minimal"
+      dpi: 36
+      quality: 30
+      description: "Very small file size"
+    
+    - name: "extreme"
+      label: "Extreme"
+      dpi: 20
+      quality: 15
+      description: "Maximum compression, lowest quality"
+  
+  # Progressive compression attempts for auto mode
+  progressive_configs:
+    - { dpi: 150, quality: 80, description: "High quality" }
+    - { dpi: 120, quality: 70, description: "Good quality" }
+    - { dpi: 96,  quality: 60, description: "Medium quality" }
+    - { dpi: 72,  quality: 50, description: "Low quality" }
+    - { dpi: 50,  quality: 40, description: "Very low quality" }
+    - { dpi: 36,  quality: 30, description: "Minimal quality" }
+    - { dpi: 30,  quality: 25, description: "Super compressed" }
+    - { dpi: 24,  quality: 20, description: "Heavy compression" }
+    - { dpi: 20,  quality: 15, description: "Maximum compression" }
+    - { dpi: 15,  quality: 10, description: "Extreme compression" }
+    - { dpi: 10,  quality: 5,  description: "Ultra compression" }
+  
+  max_attempts: 11  # Maximum compression attempts for auto mode
+
+# =============================================================================
+# Ghostscript Configuration
+# =============================================================================
+ghostscript:
+  executable: "gs"  # Path to Ghostscript executable
+  pdf_settings: "/screen"
+  compatibility_level: "1.4"
+  options:
+    downsample_color_images: true
+    downsample_gray_images: true
+    downsample_mono_images: true
+    downsample_type: "/Bicubic"
+    detect_duplicate_images: true
+    compress_fonts: true
+    subset_fonts: true
+    embed_all_fonts: true
+    auto_rotate_pages: "/None"
+    color_conversion_strategy: "/LeaveColorUnchanged"
+    do_thumbnails: false
+    create_job_ticket: false
+    preserve_eps_info: false
+    preserve_opi_comments: false
+
+# =============================================================================
+# Logging Configuration
+# =============================================================================
+logging:
+  level: "INFO"            # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s | %(levelname)-8s | %(name)s | %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+  file:
+    enabled: true
+    path: "logs/app.log"
+    max_size_mb: 10
+    backup_count: 5
+  console:
+    enabled: true
+    colorized: true
+
+# =============================================================================
+# UI/Theme Configuration
+# =============================================================================
+ui:
+  title: "PDF Compression Tool"
+  logo_url: ""  # Optional: URL to logo image
+  
+  theme:
+    default_mode: "light"  # light, dark, system
+    
+  three_js:
+    enabled: true
+    background:
+      particle_count: 100
+      animation_speed: 1
+      color_primary: "#667eea"
+      color_secondary: "#764ba2"
+
+# =============================================================================
+# Cleanup Configuration
+# =============================================================================
+cleanup:
+  enabled: true
+  max_age_hours: 24        # Delete files older than this
+  interval_minutes: 60     # Cleanup check interval
